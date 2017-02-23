@@ -1,8 +1,6 @@
 package hashcode;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.LinkedList;
 
 /**
@@ -20,6 +18,26 @@ public class Parser {
     
     
     public static void main(String ... args){
+        build("infile.in");
+        
+        for(Endpoint e  : endpoints)
+            e.sendRequest();
+        
+        boolean marqueur = true;
+        while(marqueur){
+            marqueur = false;
+            for(Cache c = caches) {
+                if(c.addCache())
+                    marqueur = true;
+            }
+            for(Endpoint e : endpoints)
+                e.braseCaches();
+        }
+        //build list
+        //while alexis methods return true on one cache
+            //iterrate all the endpoint
+        
+        //serialise
         
     }
     
@@ -80,6 +98,15 @@ public class Parser {
                 Endpoint  e = endpoints.get(Integer.parseInt(split[1]));
                 e.anticipations.put(Integer.parseInt(split[0]), Integer.parseInt(split[2]));
             }
+        } catch ( IOException e ) {
+            e.printStackTrace();
+        }
+    }
+    
+    public static void write(String s){
+        BufferedWriter bw;
+        try {
+            bw = new BufferedWriter(new FileWriter(s));
         } catch ( IOException e ) {
             e.printStackTrace();
         }
