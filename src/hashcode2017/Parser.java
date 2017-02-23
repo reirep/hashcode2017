@@ -1,4 +1,4 @@
-package res.hashcode;
+package hashcode2017;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

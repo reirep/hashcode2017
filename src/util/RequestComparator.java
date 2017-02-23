@@ -2,7 +2,7 @@ package util;
 
 import java.util.Comparator;
 
-import hashcode.Request;
+import hashcode2017.Request;
 
 public class RequestComparator implements Comparator<Request> {
 

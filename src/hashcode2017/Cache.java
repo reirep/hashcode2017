@@ -1,4 +1,4 @@
-package hashcode;
+package hashcode2017;
 
 import java.util.LinkedList;
 
@@ -11,9 +11,6 @@ import util.RequestMaxPQ;
 public class Cache {
     public LinkedList<Integer> videos = new LinkedList<>();
     public double remainingMemory;
-    
-    
-    RequestMaxPQ<Request> pq = new RequestMaxPQ<Request>(1000, new RequestComparator());
     
     
 }

@@ -1,4 +1,4 @@
-package res.hashcode;
+package hashcode2017;
 
 import java.util.LinkedList;
 
