@@ -1,4 +1,4 @@
-package hashcode;
+package hashcode2017;
 
 public class Request {
 
