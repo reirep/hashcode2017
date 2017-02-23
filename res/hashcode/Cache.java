@@ -11,8 +11,6 @@ public class Cache {
     
     public DualTreeBidiMap<Integer, Integer> poplist = new DualTreeBidiMap<>();
     
-    
-    public LinkedList<Integer> videos = new LinkedList<>();// List of the videos available int the cache
     public double remainingMemory;// Space available in the cache
     
     /*
@@ -27,6 +25,9 @@ public class Cache {
         while (Parser.videos.get(poplist.get(poplist.firstKey())) > remainingMemory) {
             poplist.remove(poplist.firstKey());
         }
+    
+        if (poplist.isEmpty() || remainingMemory == 0)
+            return false; // if the RequestList is empty or the cache is full return false
         int videoAdd =  poplist.get(poplist.remove(poplist.firstKey()));// Get the key of the video to add to the buffer
         videos.add(videoAdd);
         remainingMemory -= Parser.videos.get(videoAdd); // reduce de size of remainingMemory
