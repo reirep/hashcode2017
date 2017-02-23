@@ -7,4 +7,5 @@ import java.util.LinkedList;
  */
 public class Cache {
     public LinkedList<Integer> videos = new LinkedList<>();
+    public double remainingMemory;
 }

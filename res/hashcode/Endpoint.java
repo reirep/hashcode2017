@@ -13,6 +13,6 @@ public class Endpoint {
     LinkedList<Integer> prevu = new LinkedList<>();
     
     LinkedList<Cache> caches = new LinkedList<>();
-    LinkedList<Double> delayCache = new LinkedList<>();
+    LinkedList<Integer> delayCache = new LinkedList<>();
 
 }
