@@ -17,7 +17,6 @@ public class Parser {
     public static LinkedList<Cache> caches = new LinkedList<>();
     public static  LinkedList<Endpoint> endpoints = new LinkedList<>();
     
-    public double TailleCache = 0;
     
     
     
@@ -69,10 +68,12 @@ public class Parser {
             }
             
             //on parse les request
-            
-            
-            
-            
+            for(int i = 0; i < nbreAnticipatedrequest; i++){
+                split = rb.readLine().split("");
+                Endpoint  e = endpoints.get(Integer.parseInt(split[1]));
+                e.video.add(Integer.parseInt(split[0]));
+                e.prevu.add(Integer.parseInt(split[2]));
+            }
         } catch ( IOException e ) {
             e.printStackTrace();
         }
