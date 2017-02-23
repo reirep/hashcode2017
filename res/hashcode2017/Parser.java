@@ -34,6 +34,8 @@ public class Parser {
             for(Endpoint e : endpoints)
                 e.braseCaches();
         }
+        
+        write("kitten.out");
         //build list
         //while alexis methods return true on one cache
             //iterrate all the endpoint
