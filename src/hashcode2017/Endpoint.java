@@ -1,7 +1,6 @@
 package hashcode2017;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Set;
 
@@ -30,26 +29,26 @@ public class Endpoint {
     *       - si ils ont la vidéo dans leur liste, diminuer son score de la demande de cet endpoint
     *
     *
-    *
+    * retourne true si
     */
     
-    public boolean braseCaches(){
+    public void braseCaches(){
         Set<Integer> s = anticipations.keySet();
-        Iterator<Integer> i = s.iterator();
-        while(i.hasNext()){
-            for(Cache c : caches){
-                int current = i.next();
-                if(c.videos.get(current) != null && isCached.get(current) == null) {//la vidéo est contenue dans le cache et c'est nouveau
+        for ( Integer idVideo : s ) {
+            for ( Cache c : caches ) {
+                if ( c.videos.get(idVideo) != null && isCached.get(idVideo) == null ) {//la vidéo est contenue dans le cache et c'est nouveau
                     //retirer la vidéo de la demande des autres cache si la demande existe encore
+                    int val = c.poplist.get(idVideo);
+                    c.poplist.removeValue(val);
                     
+                    if ( val - anticipations.get(idVideo) > 0 )//readd the video if the score is bigger than 0
+                        c.poplist.put(val - anticipations.get(idVideo), idVideo);
                     
+                    isCached.put(idVideo, true);
                 }
             }
+            
         }
-        
-        
-        //TODO
-        return false;
     }
     
     
