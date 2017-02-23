@@ -34,17 +34,17 @@ public class Endpoint {
     
     public void braseCaches(){
         Set<Integer> s = anticipations.keySet();
-        for ( Integer current : s ) {
+        for ( Integer idVideo : s ) {
             for ( Cache c : caches ) {
-                if ( c.videos.get(current) != null && isCached.get(current) == null ) {//la vidéo est contenue dans le cache et c'est nouveau
+                if ( c.videos.get(idVideo) != null && isCached.get(idVideo) == null ) {//la vidéo est contenue dans le cache et c'est nouveau
                     //retirer la vidéo de la demande des autres cache si la demande existe encore
-                    int key = c.poplist.getKey(current);
-                    c.poplist.remove(key);
+                    int val = c.poplist.get(idVideo);
+                    c.poplist.removeValue(val);
                     
-                    if ( key - anticipations.get(current) > 0 )//readd the video if the score is bigger than 0
-                        c.poplist.put(key - anticipations.get(current), current);
+                    if ( val - anticipations.get(idVideo) > 0 )//readd the video if the score is bigger than 0
+                        c.poplist.put(val - anticipations.get(idVideo), idVideo);
                     
-                    isCached.put(current, true);
+                    isCached.put(idVideo, true);
                 }
             }
             
