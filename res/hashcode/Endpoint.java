@@ -30,26 +30,26 @@ public class Endpoint {
     *       - si ils ont la vidéo dans leur liste, diminuer son score de la demande de cet endpoint
     *
     *
-    *
+    * retourne true si
     */
     
-    public boolean braseCaches(){
+    public void braseCaches(){
         Set<Integer> s = anticipations.keySet();
-        Iterator<Integer> i = s.iterator();
-        while(i.hasNext()){
-            for(Cache c : caches){
-                int current = i.next();
-                if(c.videos.get(current) != null && isCached.get(current) == null) {//la vidéo est contenue dans le cache et c'est nouveau
+        for ( Integer current : s ) {
+            for ( Cache c : caches ) {
+                if ( c.videos.get(current) != null && isCached.get(current) == null ) {//la vidéo est contenue dans le cache et c'est nouveau
                     //retirer la vidéo de la demande des autres cache si la demande existe encore
+                    int key = c.poplist.getKey(current);
+                    c.poplist.remove(key);
                     
+                    if ( key - anticipations.get(current) > 0 )//readd the video if the score is bigger than 0
+                        c.poplist.put(key - anticipations.get(current), current);
                     
+                    isCached.put(current, true);
                 }
             }
+            
         }
-        
-        
-        //TODO
-        return false;
     }
 
 }
