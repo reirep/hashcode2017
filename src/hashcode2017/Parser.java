@@ -1,9 +1,9 @@
 package hashcode2017;
 
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.IntSummaryStatistics;
 import java.util.LinkedList;
 
 /**
@@ -24,7 +24,15 @@ public class Parser {
         
     }
     
+    //consrtire la liste de requetes des caches
     
+    //--st loop
+    
+    //parser tt les caches et charger la video #1 de la liste de pop dans le cache et pop la vidéo de la liste
+    
+    // parser tt les users pr vois quels viéos ont été acceptés et les deload deqs autres caches
+    
+    //-- end loop
     
     public static void build(String in){
         BufferedReader rb;
@@ -71,8 +79,7 @@ public class Parser {
             for(int i = 0; i < nbreAnticipatedrequest; i++){
                 split = rb.readLine().split("");
                 Endpoint  e = endpoints.get(Integer.parseInt(split[1]));
-                e.video.add(Integer.parseInt(split[0]));
-                e.prevu.add(Integer.parseInt(split[2]));
+                e.anticipations.put(Integer.parseInt(split[0]), Integer.parseInt(split[2]));
             }
         } catch ( IOException e ) {
             e.printStackTrace();

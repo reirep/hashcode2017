@@ -2,19 +2,18 @@ package hashcode2017;
 
 import java.util.LinkedList;
 
-import util.RequestComparator;
-import util.RequestMaxPQ;
-
+import org.apache.commons.collections4.bidimap.DualTreeBidiMap;
 /**
  * Created by pierre on 23/02/17
  */
 public class Cache {
 
-    public LinkedList<Integer> videos = new LinkedList<>();// List of the videos available int the cache
-    public double remainingMemory;// Space available in the cache
+	
+    public LinkedList<Integer> videos = new LinkedList<>();
+    public double remainingMemory;
     
-    
-    RequestMaxPQ<Request> pq = new RequestMaxPQ<Request>(1000, new RequestComparator()); // List of the video request from the endPoints
+    public DualTreeBidiMap<Integer, Integer> poplist = new DualTreeBidiMap<>();
+
     /*
     @pre -
     @post: take the first element from pq and add ths element to the list of videos in the cache
@@ -32,5 +31,7 @@ public class Cache {
         remaining -= Parser.videos.get(videoAdd); // reduce de size of remainingMemory
         return true;
     }
+    
+    
 
 }
