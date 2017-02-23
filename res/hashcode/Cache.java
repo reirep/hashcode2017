@@ -1,4 +1,4 @@
-package hashcode;
+package res.hashcode;
 
 import java.util.LinkedList;
 
@@ -8,4 +8,7 @@ import java.util.LinkedList;
 public class Cache {
     public LinkedList<Integer> videos = new LinkedList<>();
     public double remainingMemory;
+    
+    
+    
 }

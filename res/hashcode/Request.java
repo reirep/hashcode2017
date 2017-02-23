@@ -1,3 +1,4 @@
+package res.hashcode;
 
 public class Request {
 
