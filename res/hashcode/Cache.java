@@ -8,7 +8,6 @@ import org.apache.commons.collections4.bidimap.DualTreeBidiMap;
  */
 public class Cache {
     public LinkedList<Integer> videos = new LinkedList<>();
-    public double remainingMemory;
     
     public DualTreeBidiMap<Integer, Integer> poplist = new DualTreeBidiMap<>();
     
@@ -30,7 +29,7 @@ public class Cache {
         }
         int videoAdd =  poplist.get(poplist.remove(poplist.firstKey()));// Get the key of the video to add to the buffer
         videos.add(videoAdd);
-        remaining -= Parser.videos.get(videoAdd); // reduce de size of remainingMemory
+        remainingMemory -= Parser.videos.get(videoAdd); // reduce de size of remainingMemory
         return true;
     }
 }
