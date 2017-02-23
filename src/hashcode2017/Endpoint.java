@@ -56,11 +56,15 @@ public class Endpoint {
     	for(Cache c : this.caches){
     		for(int i = 0; i < anticipations.size(); i++){
     			if(c.poplist.containsKey(i)){
-    				Integer popularity = c.poplist.remove(i);
-    				popularity += anticipations.get(i);
-    				c.poplist.put(i, popularity);
+    				if(anticipations.containsKey(i)){
+	    				Integer popularity = c.poplist.remove(i);
+	    				popularity += anticipations.get(i);
+	    				c.poplist.put(i, popularity);
+    				}
     			} else {
-    				c.poplist.put(i, anticipations.get(i));
+    				if(anticipations.containsKey(i)){
+    					c.poplist.put(i, anticipations.get(i));
+    				}
     			}
     		}
     	}
