@@ -1,6 +1,7 @@
 package hashcode2017;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Set;
 
@@ -53,16 +54,53 @@ public class Endpoint {
     
     
     public void sendRequests(){
+    	System.out.println("->      " + this.caches);
     	for(Cache c : this.caches){
-    		for(int i = 0; i < anticipations.size(); i++){
+    		Iterator<Integer> iter = anticipations.keySet().iterator();
+    		Integer i = 0;
+    		while(iter.hasNext()){
+    			i = iter.next();
     			if(c.poplist.containsKey(i)){
-    				Integer popularity = c.poplist.remove(i);
-    				popularity += anticipations.get(i);
-    				c.poplist.put(i, popularity);
+    				System.out.println("check");
+    				System.out.println(anticipations);
+    				System.out.println(i);
+    				if(anticipations.containsKey(i)){
+	    				Integer popularity = c.poplist.remove(i);
+	    				System.out.println(i);
+	    				System.out.println(popularity);
+	    				popularity += anticipations.get(i);
+	    				c.poplist.put(i, popularity);
+    				}
     			} else {
-    				c.poplist.put(i, anticipations.get(i));
+    				if(anticipations.containsKey(i)){
+    					c.poplist.put(i, anticipations.get(i));
+    				}
     			}
     		}
+    		
+    		
+    		
+    		
+    		/*for(int i = 0; i < anticipations.size(); i++){
+    			int index = anticipations.get(i);
+    			System.out.println("    bite");
+    			if(c.poplist.containsKey(i)){
+    				System.out.println("check");
+    				System.out.println(anticipations);
+    				System.out.println(i);
+    				if(anticipations.containsKey(i)){
+	    				Integer popularity = c.poplist.remove(i);
+	    				System.out.println(i);
+	    				System.out.println(popularity);
+	    				popularity += anticipations.get(i);
+	    				c.poplist.put(i, popularity);
+    				}
+    			} else {
+    				if(anticipations.containsKey(i)){
+    					c.poplist.put(i, anticipations.get(i));
+    				}
+    			}
+    		}*/
     	}
     }
 }
