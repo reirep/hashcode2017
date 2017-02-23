@@ -1,4 +1,4 @@
-package hashcode;
+package res.hashcode;
 
 import java.util.HashMap;
 import java.util.LinkedList;
