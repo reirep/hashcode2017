@@ -54,20 +54,20 @@ public class Endpoint {
     
     
     public void sendRequests(){
-    	System.out.println("->      " + this.caches);
+    	//System.out.println("->      " + this.caches);
     	for(Cache c : this.caches){
     		Iterator<Integer> iter = anticipations.keySet().iterator();
     		Integer i = 0;
     		while(iter.hasNext()){
     			i = iter.next();
     			if(c.poplist.containsKey(i)){
-    				System.out.println("check");
-    				System.out.println(anticipations);
-    				System.out.println(i);
+    				//System.out.println("check");
+    				//System.out.println(anticipations);
+    				//System.out.println(i);
     				if(anticipations.containsKey(i)){
 	    				Integer popularity = c.poplist.remove(i);
-	    				System.out.println(i);
-	    				System.out.println(popularity);
+	    			//	System.out.println(i);
+	    			//	System.out.println(popularity);
 	    				popularity += anticipations.get(i);
 	    				c.poplist.put(i, popularity);
     				}

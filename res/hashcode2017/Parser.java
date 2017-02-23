@@ -20,9 +20,12 @@ public class Parser {
     
     public static void main(String ... args){
         build("/home/pierre/Téléchargements/kittens.in");
-        
+    
+        System.out.println(endpoints.size());
         for(Endpoint e  : endpoints)
             e.sendRequests();
+    
+        System.out.println("end load");
         
         boolean marqueur = true;
         while(marqueur){
@@ -34,7 +37,8 @@ public class Parser {
             for(Endpoint e : endpoints)
                 e.braseCaches();
         }
-        
+    
+        System.out.println("ended !");
         write("kitten.out");
         //build list
         //while alexis methods return true on one cache
