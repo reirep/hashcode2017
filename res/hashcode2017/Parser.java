@@ -19,15 +19,15 @@ public class Parser {
     
     
     public static void main(String ... args){
-        build("infile.in");
+        build("/home/pierre/Téléchargements/kittens.in");
         
         for(Endpoint e  : endpoints)
-            e.sendRequest();
+            e.sendRequests();
         
         boolean marqueur = true;
         while(marqueur){
             marqueur = false;
-            for(Cache c = caches) {
+            for(Cache c : caches) {
                 if(c.addCache())
                     marqueur = true;
             }
@@ -65,7 +65,8 @@ public class Parser {
             nbreAnticipatedrequest = Integer.parseInt(split[2]);
             nbreCache = Integer.parseInt(split[3]);
             tailleCache = Integer.parseInt(split[4]);
-    
+            //System.out.println(nbreVideos+"\t"+nbreEndpoint+"\t"+nbreAnticipatedrequest+"\t"+nbreCache+"\t"+tailleCache);
+            //System.out.flush();
             //créer les caches ici
             for(int i = 0; i < nbreCache; i++) {
                 Cache c = new Cache();
@@ -90,12 +91,13 @@ public class Parser {
                     split = rb.readLine().split(" ");
                     e.caches.add(caches.get(Integer.parseInt(split[0])));
                     e.delayCache.add(Integer.parseInt(split[1]));
+                    endpoints.add(e);
                 }
             }
             
             //on parse les request
             for(int i = 0; i < nbreAnticipatedrequest; i++){
-                split = rb.readLine().split("");
+                split = rb.readLine().split(" ");
                 Endpoint  e = endpoints.get(Integer.parseInt(split[1]));
                 e.anticipations.put(Integer.parseInt(split[0]), Integer.parseInt(split[2]));
             }
@@ -108,8 +110,23 @@ public class Parser {
         BufferedWriter bw;
         try {
             bw = new BufferedWriter(new FileWriter(s));
+            bw.write(getNbreCacheUsed()+"\n");
+            for(int i = 0; i < caches.size(); i++) {
+                bw.write(i + " ");
+                Cache c = caches.get(i);
+                for(int j = 0; j < c.videos.size(); j++)
+                    bw.write(c.videos.get(j)+"");
+            }
         } catch ( IOException e ) {
             e.printStackTrace();
         }
+    }
+    
+    public static int getNbreCacheUsed(){
+        int ret = 0;
+        for(Cache c : caches)
+            if(c.videos.size() != 0)
+                ret ++;
+        return ret;
     }
 }
