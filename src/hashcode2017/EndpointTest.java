@@ -34,12 +34,15 @@ public class EndpointTest {
 		elist.add(e1);
 		elist.add(e2);
 		
-		System.out.println(e1);
-		System.out.println(e1.anticipations);
+		System.out.println(elist);
 		
 		for(Endpoint e : elist){
+			System.out.println("test");
 			e.sendRequests();
 		}
+		
+		System.out.println(e1c1.poplist);
+		System.out.println(e1c2.poplist);
 		
 	}
 }
