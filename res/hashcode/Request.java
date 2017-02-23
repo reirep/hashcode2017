@@ -1,4 +1,4 @@
-package res.hashcode;
+package hashcode;
 
 public class Request {
 
@@ -6,21 +6,11 @@ public class Request {
 	 * @author sdo
 	 * */
 	
-	int videoId;
-	int requests;
-	int endpointId;
-	int vidSize;
+	public int key;	 // Requests
+	public int value; // Video ID
 	
-	public Request(){
-		
+	public Request(int k, int v){
+		this.key = k;
+		this.value = v;
 	}
-	
-	public Request(int vId, int req, int endId, int vsize){
-		this.videoId = vId;
-		this.requests = req;
-		this.endpointId = endId;
-		this.vidSize = vsize;
-	}
-	
-	
 }
