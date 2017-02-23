@@ -1,5 +1,6 @@
 package hashcode;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 
 /**
@@ -9,10 +10,26 @@ public class Endpoint {
     
     public double delay = 0;
     
-    LinkedList<Integer> video = new LinkedList<>();
-    LinkedList<Integer> prevu = new LinkedList<>();
+    // dans l'odre id video, demande
+    HashMap<Integer, Integer> anticipations = new HashMap<>();
     
     LinkedList<Cache> caches = new LinkedList<>();
     LinkedList<Integer> delayCache = new LinkedList<>();
+    
+    /*
+    * pour touts les caches:
+    *   - obtenir la liste des vidéos cachées
+    *   - filtrer cette liste pour uniquement les vidéos de cet endpoint
+    *   - pour touts les vidéos obtenues
+    *       - parcourir touts les caches
+    *
+    *
+    *
+    */
+    
+    public boolean braseCaches(){
+        
+        return false;
+    }
 
 }
